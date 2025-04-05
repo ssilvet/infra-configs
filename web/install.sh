@@ -21,7 +21,19 @@ echo "Setting DocumentRoot to /home/ssilvet/infra-configs/web"
 sudo chmod -R 755 /home/ssilvet/infra-configs/web
 
 # Lisa Apache VirtualHost konfiguratsiooni <Directory> blokk õigesti
-# (selle me tegime käsitsi, aga saab ka skriptis kui vaja)
+echo "Setting up Apache VirtualHost..."
+
+sudo bash -c 'cat > /etc/apache2/sites-available/000-default.conf <<EOF
+<VirtualHost *:80>
+    DocumentRoot /home/ssilvet/infra-configs/web
+
+    <Directory /home/ssilvet/infra-configs/web>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+</VirtualHost>
+EOF'
 
 # Kontrolli Apache konfiguratsiooni
 sudo apache2ctl configtest
