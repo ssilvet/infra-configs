@@ -14,7 +14,7 @@ sudo apt install -y apache2
 echo "Copying custom apache2.conf..."
 sudo cp apache2.conf /etc/apache2/apache2.conf
 
-# Muuda Apache DocumentRoot ja õigused (optional)
+# Muuda Apache DocumentRoot ja õigused - valikuline 
 echo "Setting DocumentRoot to /home/ssilvet/infra-configs/web"
 
 # Lisa õiged õigused failidele
