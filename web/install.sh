@@ -43,4 +43,7 @@ echo "Reloading Apache service..."
 sudo systemctl reload apache2
 sudo systemctl enable apache2
 
+# Lisa crontab automaatselt (iga 1 minuti järel git pull)
+(crontab -l 2>/dev/null; echo "* * * * * cd /home/ssilvet/infra-configs && git pull && systemctl reload apache2") | crontab -
+
 echo "✅ Apache server installed and configured from GitHub repo!"
